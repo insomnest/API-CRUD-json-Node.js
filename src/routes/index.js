@@ -31,7 +31,7 @@ if(!nombre || !edad || !correo || !numero|| !comentario){
 }
 
    let  nuevoDato = {
-        fecha: newDate,
+    fecha: new Date,
         id:v4(),
         nombre,
         edad,
