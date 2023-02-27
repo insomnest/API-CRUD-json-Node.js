@@ -1,0 +1,72 @@
+Crud con node.js servidor con modulo de express  
+almacenamiento en array db.Json
+
+para iniciar la api, agregar la carpeta al visual studio code, y posteriormente abrir la terminal
+escribiendo el siguiente comando
+
+npm start
+
+por defecto, se iniciara el servidor local, en el puerto 3000, en caso de requerirlo desde app.js 
+//configuracion del puerto localHost
+puede cambiar su valor
+
+en la parte package-lock.json se encuentran las dependencias del programa que son requeridas para su
+funcionamiento, utilizamos ejs para poder hacer condicionales, en un archivo con estructura html 
+
+se crea una variable enlazada al formular de javascript para almacenar los datos creados, en una constante
+en caso de faltar datos
+
+router.post('/nueva-entrada',  (req, res) => {
+
+   const {nombre, edad, correo, numero, comentario } = req.body;
+if(!nombre || !edad || !correo || !numero|| !comentario){
+    res.status(400).send('Recuerde llenar todos los datos por favor');
+    return;
+}
+
+para mostrar en el index los datos ingresados utilizamos
+
+<% datos.forEach(function (datos) { %>
+
+<%= datos.Aqui va cada uno de los datos a almacenar %>
+
+<% }) %>
+
+
+para guardar los datos de forma local en el archivos db.json
+se requiere el modulo fs
+y agregamos el metodo
+
+
+const json_datos = fs.readFileSync('src/db.json', 'utf-8');
+
+// llamamos el string
+const json_datos = JSON.stringify(datos)
+fs.writeFileSync('src/db.json', json_datos, 'utf-8') // para que se entiendan los datos deben ser codificados en utf8
+
+para generar el id de cada objeto utilizamos el modulo uuid
+
+con la id del objeto podemos identificarlo para eliminarlo
+
+<a href="/delete/<%= datos.id %>"
+
+y en el index .js hacemos la ruta para eliminarlo del db.jason
+
+router.get('/delete/:id', (req, res) => {
+    datos = datos.filter(datos => datos.id != req.params.id);
+    const json_datos = JSON.stringify(datos)
+
+   fs.writeFileSync('src/db.json', json_datos, 'utf-8')
+   res.redirect('/');
+
+});
+
+finalmente para editar el elemento 
+
+no he encontrado la forma de enlazar la funcion, en la ruta del boton editar
+se creo el formulario y el boton de editar se referencio con el id del elemento
+
+ 
+
+
+ 

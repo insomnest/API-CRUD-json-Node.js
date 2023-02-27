@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/header') %> 
+    <title>Nueva entrada de datos</title>
+</head>
+<body>
+
+    <%- include('partials/navigation') %> 
+
+    <div class="container p-4">
+
+        <form method="post" action="/nueva-entrada" class="card card-body" >
+            <div class="form-group" value="{{datos.nombre}}">
+                <label for="usuario">Nombre</label>
+                <input type="text" class="form-control" 
+                name="nombre" id="title" placeholder="Por favor ingrese su Nombre" >
+            </div>         
+
+            <div class="form-group">
+                <label for="Edad">Edad</label>
+                <input type="number" class="form-control" 
+                name="edad" id="title" placeholder="Entry a new title" >
+            </div>       
+
+            <div class="form-group">
+                <label for="email">Correo</label>
+                <input type="email" class="form-control" 
+                name="correo" id="title" placeholder="Entry a new title" >
+            </div>    
+            <div class="form-group">
+                <label for="number">Numero de Contacto</label>
+                <input type="number" class="form-control" 
+                name="numero" id="title" placeholder="Entry a new title" >
+            </div>      
+            <div class="form-group">
+                <label for="comentario">descripción</label>
+                <textarea name="comentario" id="description" rows="2" class="form-control" ></textarea>                 
+            </div>        
+        <input type="submit" value="Guardar" class="btn btn-primary"> 
+        <a href="/" class="btn btn-outline-primary mt-1">Volver</a>
+
+        </form>
+    </div>
+</body>
+</html>

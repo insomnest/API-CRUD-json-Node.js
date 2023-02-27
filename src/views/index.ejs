@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include('partials/header') %>
+        <title>Api CRUD con Node.js</title>
+</head>
+
+<body>
+
+    <%- include('partials/navigation') %>
+
+
+    <a href="/nueva-entrada" class="btn btn-outline-primary mt-1">Crear</a>
+
+   
+
+    <table class="table table-bordered table-striped text-center mt-4">
+        <thead >
+            <tr class ="bg-primary text-white">
+
+            
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Correo</th>
+            <th>Numero</th>
+            <th>Comentario</th>
+            <th>Acciones</th>
+          
+            </tr>
+
+
+        </thead>
+        <tbody>
+            <% datos.forEach(function (datos) { %>
+            <tr >
+                <td><%= datos.nombre %></td>
+                <td><%= datos.edad %></td>
+                <td><%= datos.correo %></td>
+                <td><%= datos.numero %></td>
+                <td><%= datos.comentario %></td>
+                
+            <td>
+                <a href="/delete/<%= datos.id %>" onclick="return confirm('¿Seguro? se eliminara el registro');"
+                    class="btn btn-outline-danger mt-1">  Borrar </a>
+            
+                <a href="/edit/<%= datos.id %>" class="btn btn-outline-info mt-1"<i class="fas fa-edit></i>"> Editar </a>
+            </td>
+
+            </tr>
+            <% }) %>            
+        </tbody>
+    </table>
+
+</body>
+
+</html>
